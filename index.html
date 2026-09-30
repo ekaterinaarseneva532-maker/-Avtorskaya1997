@@ -1,44 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторская мастерская икон — Ручная работа</title>
+    <title>ИКОНЫ — Авторская коллекция ручной работы</title>
     
-    <!-- Подключение премиальных шрифтов и иконок FontAwesome -->
+    <!-- Подключение шрифтов и иконок -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary-dark: #3b0003;
-            --primary-red: #6a0007;
-            --gold-grad: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-            --gold-solid: #d4af37;
-            --gold-hover: #f3e5ab;
-            --bg-light: #fdfaf4;
-            --card-bg: #ffffff;
-            --text-main: #1a1a1a;
-            --text-muted: #555555;
-            --shadow-gold: 0 10px 30px rgba(180, 137, 33, 0.2);
-            --shadow-card: 0 15px 35px rgba(0, 0, 0, 0.08);
+            --bg-dark: #120c0a;
+            --bg-card: #1c1410;
+            --gold-light: #f3e0aa;
+            --gold-main: #d4af37;
+            --gold-grad: linear-gradient(135deg, #e5c378 0%, #c99e42 50%, #a37928 100%);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --text-light: #f4ede2;
+            --text-gold: #dfba68;
+            --text-muted: #a69888;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
-        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
 
         /* Шапка сайта */
         header {
-            background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-red) 100%);
-            border-bottom: 3px solid var(--gold-solid);
+            background-color: rgba(18, 12, 10, 0.95);
+            border-bottom: 1px solid var(--border-gold);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
         }
 
         .nav-container {
@@ -50,200 +53,370 @@
             align-items: center;
         }
 
-        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo i { font-size: 2.2rem; background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .logo-text h1 { font-family: 'Cinzel Decorative', serif; font-size: 1.4rem; color: #fff; letter-spacing: 1px; }
-        .logo-text span { font-size: 0.75rem; color: var(--gold-solid); text-transform: uppercase; letter-spacing: 3px; font-weight: 600; }
-
-        /* Главный баннер */
-        .hero {
-            text-align: center;
-            padding: 6rem 1.5rem;
-            background: linear-gradient(rgba(26, 0, 3, 0.82), rgba(26, 0, 3, 0.82)), url('https://images.unsplash.com/photo-1548625149-fc4a29cf7092?q=80&w=1200') center/cover attachment fixed;
-            color: #fff;
-            border-bottom: 3px solid var(--gold-solid);
-        }
-
-        .hero h2 { font-size: 3.5rem; background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto 2.5rem; color: #f0e6d2; font-weight: 300; }
-
-        .btn-gold {
-            display: inline-block;
-            background: var(--gold-grad);
-            color: var(--primary-dark);
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
+        .logo { text-decoration: none; }
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: var(--shadow-gold);
-            transition: all 0.3s ease;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .logo span {
+            font-size: 0.65rem;
+            color: var(--text-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            display: block;
+            margin-top: 4px;
         }
 
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4); }
+        .btn-outline-gold {
+            border: 1px solid var(--gold-main);
+            color: var(--text-gold);
+            padding: 0.5rem 1.4rem;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            background: transparent;
+            cursor: pointer;
+        }
 
-        /* Каталог Икон */
-        .catalog-section { max-width: 1200px; margin: 5rem auto; padding: 0 1.5rem; text-align: center; }
-        .section-title { font-size: 3rem; color: var(--primary-dark); margin-bottom: 0.5rem; position: relative; display: inline-block; }
-        .section-title::after { content: ''; display: block; width: 60%; height: 3px; background: var(--gold-grad); margin: 10px auto 0; border-radius: 2px; }
-        .subtitle { color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; }
+        .btn-outline-gold:hover {
+            background: var(--gold-grad);
+            color: var(--bg-dark);
+            font-weight: 600;
+        }
 
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        /* Главный баннер (Hero) */
+        .hero {
+            padding: 5rem 1.5rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h2 {
+            font-size: 3.8rem;
+            color: var(--text-light);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-fill-gold {
+            background: var(--gold-grad);
+            color: var(--bg-dark);
+            padding: 0.9rem 2.2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-fill-gold:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .hero-image-wrap {
+            position: relative;
+            border: 1px solid var(--border-gold);
+            padding: 12px;
+            background: rgba(28, 20, 16, 0.5);
+        }
+
+        .hero-image-wrap img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Каталог */
+        .catalog-section {
+            max-width: 1200px;
+            margin: 4rem auto 6rem;
+            padding: 0 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
 
         .product-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: var(--shadow-card);
-            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            padding: 1.2rem;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: transform 0.3s ease;
         }
 
-        .product-card:hover { transform: translateY(-8px); border-color: var(--gold-solid); box-shadow: var(--shadow-gold); }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
 
-        .product-img { width: 100%; height: 340px; object-fit: cover; border-bottom: 2px solid var(--gold-solid); }
+        .product-img-main {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            cursor: pointer;
+        }
 
-        .product-info { padding: 1.8rem; text-align: left; }
-        .product-title { font-size: 1.7rem; color: var(--primary-dark); margin-bottom: 0.5rem; font-weight: 700; }
-        .product-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.2rem; min-height: 45px; }
-        .product-price { font-size: 1.5rem; font-weight: 700; color: var(--primary-red); margin-bottom: 1.2rem; }
+        .product-gallery-thumbs {
+            display: flex;
+            gap: 6px;
+            margin: 8px 0 12px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
 
-        .btn-order {
+        .product-gallery-thumbs img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border: 1px solid var(--border-gold);
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            flex-shrink: 0;
+        }
+
+        .product-gallery-thumbs img:hover, .product-gallery-thumbs img.active {
+            opacity: 1;
+            border-color: var(--gold-main);
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: var(--text-gold);
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 1.2rem;
+        }
+
+        .btn-card-order {
             display: block;
             width: 100%;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-dark));
-            color: #fff;
-            padding: 0.9rem;
+            border: 1px solid var(--gold-main);
+            color: var(--text-gold);
+            padding: 0.8rem;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            border: 1px solid var(--gold-solid);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             transition: all 0.3s ease;
         }
 
-        .btn-order:hover { background: var(--gold-grad); color: var(--primary-dark); font-weight: 700; }
+        .btn-card-order:hover {
+            background: var(--gold-grad);
+            color: var(--bg-dark);
+            font-weight: 600;
+        }
 
         .delete-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #d9534f;
-            color: white;
+            top: 15px; right: 15px;
+            background: #a83232;
+            color: #fff;
             border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 6px 12px;
             cursor: pointer;
-            font-size: 0.85rem;
-            display: none; /* Видно только админу */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 0.8rem;
+            display: none;
+            z-index: 10;
         }
 
-        /* Секция Контактов */
-        .contacts-section { max-width: 1000px; margin: 5rem auto; padding: 0 1.5rem; text-align: center; }
-        .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-
-        .contact-card {
-            background: var(--card-bg);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: var(--shadow-card);
+        /* Контакты */
+        .contacts-section {
+            background: #17100c;
+            border-top: 1px solid var(--border-gold);
+            border-bottom: 1px solid var(--border-gold);
+            padding: 5rem 1.5rem;
         }
 
-        .contact-card i.main-icon { font-size: 2.8rem; background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
-        .contact-card h4 { font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 0.5rem; }
+        .contacts-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
 
-        .phone-link { display: inline-block; font-size: 1.3rem; font-weight: 700; color: var(--primary-red); text-decoration: none; margin: 0.8rem 0; }
+        .contact-box h4 {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
 
-        .social-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 1.2rem; }
+        .phone-link {
+            font-size: 1.5rem;
+            color: var(--text-gold);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
 
-        .social-btn {
+        .social-links {
             display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social-item {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 18px;
-            border-radius: 50px;
-            color: #fff;
+            padding: 8px 16px;
+            border: 1px solid var(--border-gold);
+            color: var(--text-light);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: transform 0.2s ease;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
         }
 
-        .social-btn:hover { transform: translateY(-3px); }
+        .social-item:hover {
+            border-color: var(--gold-main);
+            color: var(--text-gold);
+        }
 
-        .btn-wa { background-color: #25D366; }
-        .btn-tg { background-color: #0088cc; }
-        .btn-vk { background-color: #0077FF; }
-        .btn-insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .btn-ok { background-color: #EE8208; }
-
-        /* Админ Панель Модальное Окно */
+        /* Админка */
         .admin-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.75);
+            background: rgba(0,0,0,0.85);
             z-index: 2000;
             justify-content: center;
             align-items: center;
             padding: 1rem;
+            overflow-y: auto;
         }
 
         .admin-content {
-            background: #fff;
-            padding: 2.5rem;
-            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--gold-main);
+            padding: 2rem;
             max-width: 500px;
             width: 100%;
-            border: 2px solid var(--gold-solid);
             position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            color: var(--text-light);
+            margin: auto;
         }
 
         .close-admin { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: var(--text-muted); }
-        .admin-content h3 { font-size: 2rem; color: var(--primary-dark); margin-bottom: 1.5rem; text-align: center; }
 
-        .form-group { margin-bottom: 1.2rem; text-align: left; }
-        .form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--primary-dark); }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; font-size: 0.85rem; color: var(--text-gold); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 1px; }
         .form-group input, .form-group textarea {
-            width: 100%; padding: 0.8rem; border: 1px solid var(--gold-solid); border-radius: 6px; font-family: inherit;
+            width: 100%;
+            padding: 0.8rem;
+            background: #120c0a;
+            border: 1px solid var(--border-gold);
+            color: #fff;
+            font-family: inherit;
         }
 
-        .btn-submit {
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-dark));
-            color: #fff;
-            padding: 1rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 700;
+        .file-upload-label {
+            display: inline-block;
+            border: 1px dashed var(--gold-main);
+            color: var(--text-gold);
+            padding: 0.6rem 1rem;
             cursor: pointer;
-            margin-top: 1rem;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
         }
 
         footer {
-            background: var(--primary-dark);
-            color: #fff;
             text-align: center;
-            padding: 2.5rem 1rem;
-            border-top: 3px solid var(--gold-solid);
-            margin-top: 5rem;
+            padding: 3rem 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
-        footer p { font-size: 0.9rem; opacity: 0.8; }
-        .admin-login-link { margin-top: 10px; display: inline-block; color: var(--gold-solid); cursor: pointer; font-size: 0.85rem; text-decoration: underline; }
+        .admin-link {
+            display: block;
+            margin-top: 10px;
+            color: var(--text-gold);
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.8rem;
+        }
 
-        @media (max-width: 768px) {
-            .hero h2 { font-size: 2.4rem; }
-            .section-title { font-size: 2.2rem; }
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 3rem; }
+            .hero h2 { font-size: 2.8rem; }
+            .hero p { margin: 0 auto 2rem; }
+            .hero-buttons { justify-content: center; }
         }
     </style>
 </head>
@@ -252,121 +425,145 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo">
-                <i class="fa-solid fa-hands-praying"></i>
-                <div class="logo-text">
-                    <h1>Мастерская Икон</h1>
-                    <span>Авторская Ручная Работа</span>
-                </div>
+                <h1>ИКОНЫ</h1>
+                <span>Авторская Коллекция</span>
             </a>
+            <a href="#contacts" class="btn-outline-gold">Связаться</a>
         </div>
     </header>
 
     <section class="hero">
-        <h2>Святые Образы Ручной Работы</h2>
-        <p>Создание икон с молитвой, глубоким уважением к канону и любовью к православному искусству</p>
-        <a href="#catalog" class="btn-gold">Смотреть Галерею</a>
+        <div>
+            <span class="hero-subtitle">Авторские работы · Единичные экземпляры</span>
+            <h2>Иконы и киоты, созданные вручную</h2>
+            <p>Коллекция декоративно оформленных икон для дома, в подарок и для особого события. Каждая работа — отдельный художественный объект.</p>
+            <div class="hero-buttons">
+                <a href="#catalog" class="btn-fill-gold">Смотреть каталог</a>
+                <a href="#contacts" class="btn-outline-gold">Индивидуальный заказ</a>
+            </div>
+        </div>
+        <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?q=80&w=800" alt="Икона ручной работы">
+        </div>
     </section>
 
-    <!-- СЕКЦИЯ КАТАЛОГА -->
     <section class="catalog-section" id="catalog">
-        <h3 class="section-title">Каталог Работ</h3>
-        <p class="subtitle">Каждая икона уникальна и пишется вручную из натуральных материалов</p>
+        <div class="section-header">
+            <span class="section-subtitle">Каталог работ</span>
+            <h3 class="section-title">Авторские Иконы</h3>
+        </div>
 
         <div class="products-grid" id="productsContainer">
-            <!-- Динамически загружается через JS -->
+            <!-- Загружается из JS -->
         </div>
     </section>
 
-    <!-- СЕКЦИЯ КОНТАКТОВ -->
     <section class="contacts-section" id="contacts">
-        <h3 class="section-title">Связаться с Мастером</h3>
-        <p class="subtitle" style="margin-bottom: 1rem;">Задайте вопрос, обсудите индивидуальный заказ или приобретите икону:</p>
-
-        <div class="contacts-grid">
-            <div class="contact-card">
-                <i class="fa-solid fa-phone main-icon"></i>
-                <h4>Телефон и Мессенджеры</h4>
+        <div class="contacts-container">
+            <div class="contact-box">
+                <h4>Связаться с мастером</h4>
+                <p style="color: var(--text-muted); margin-bottom: 1rem; font-weight: 300;">Обсудить индивидуальный заказ, размеры или покупку готовой иконы:</p>
                 <a href="tel:+79250299062" class="phone-link" id="phoneDisplay">+7 (925) 029-90-62</a>
                 
-                <div class="social-buttons">
-                    <a href="https://wa.me/79250299062" id="waLink" target="_blank" class="social-btn btn-wa">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="https://t.me/+79250299062" id="tgLink" target="_blank" class="social-btn btn-tg">
-                        <i class="fa-brands fa-telegram"></i> Telegram
-                    </a>
+                <div class="social-links">
+                    <a href="https://wa.me/79250299062" id="waLink" target="_blank" class="social-item"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://t.me/+79250299062" id="tgLink" target="_blank" class="social-item"><i class="fa-brands fa-telegram"></i> Telegram</a>
                 </div>
             </div>
 
-            <div class="contact-card">
-                <i class="fa-solid fa-share-nodes main-icon"></i>
-                <h4>Социальные Сети</h4>
-                <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.5rem;">Следите за новыми работами в соцсетях:</p>
-                <div class="social-buttons">
-                    <a href="https://vk.com/ruchnaya_rabota1997" target="_blank" class="social-btn btn-vk"><i class="fa-brands fa-vk"></i> ВКонтакте</a>
-                    <a href="https://www.instagram.com/ekaterinaikona1997?stkn=ZTh5eTRpZHY4eW5t" target="_blank" class="social-btn btn-insta"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                    <a href="https://ok.ru/profile/910467336681?utm_campaign=web_share&utm_content=profile" target="_blank" class="social-btn btn-ok"><i class="fa-brands fa-odnoklassniki"></i> Одноклассники</a>
+            <div class="contact-box">
+                <h4>Социальные сети</h4>
+                <p style="color: var(--text-muted); margin-bottom: 1rem; font-weight: 300;">Следите за новыми процессами создания и работами:</p>
+                <div class="social-links">
+                    <a href="https://vk.com/ruchnaya_rabota1997" target="_blank" class="social-item"><i class="fa-brands fa-vk"></i> ВКонтакте</a>
+                    <a href="https://www.instagram.com/ekaterinaikona1997?stkn=ZTh5eTRpZHY4eW5t" target="_blank" class="social-item"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="https://ok.ru/profile/910467336681?utm_campaign=web_share&utm_content=profile" target="_blank" class="social-item"><i class="fa-brands fa-odnoklassniki"></i> Одноклассники</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- МОДАЛЬНОЕ ОКНО АДМИНКИ -->
+    <!-- Модальное окно Админки -->
     <div class="admin-modal" id="adminModal">
         <div class="admin-content">
             <span class="close-admin" onclick="closeAdmin()">&times;</span>
-            <h3>Панель Управления</h3>
+            <h3 style="font-size:2rem; color:var(--text-gold); margin-bottom:1.5rem; text-align:center;">Управление</h3>
             
             <form id="addProductForm">
                 <div class="form-group">
-                    <label>Название Иконы</label>
-                    <input type="text" id="pTitle" placeholder="например, Икона Спасителя" required>
+                    <label>Название работы</label>
+                    <input type="text" id="pTitle" placeholder="Икона Спасителя" required>
                 </div>
                 <div class="form-group">
-                    <label>Описание / Материалы / Размер</label>
+                    <label>Описание / Материалы</label>
                     <textarea id="pDesc" rows="2" placeholder="Дерево, левкас, сусальное золото. 20x25 см." required></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Цена (руб.)</label>
+                    <label>Цена</label>
                     <input type="text" id="pPrice" placeholder="15 000 ₽" required>
                 </div>
+                
                 <div class="form-group">
-                    <label>Ссылка на фото (или имя файла)</label>
-                    <input type="text" id="pImg" placeholder="ikona1.jpg или ссылка из интернета" required>
+                    <label>Фотографии (до 10 шт)</label>
+                    <textarea id="pImgs" rows="3" placeholder="Ссылки на фото через запятую (заполнятся автоматически)" required></textarea>
+                    <label for="imageFileInput" class="file-upload-label">
+                        <i class="fa-solid fa-camera"></i> Выбрать фото с телефона (до 10 шт)
+                    </label>
+                    <input type="file" id="imageFileInput" accept="image/*" multiple style="display:none" onchange="uploadMultipleImages(this)">
+                    <span id="uploadStatus" style="font-size:0.8rem; display:block; margin-top:5px;"></span>
                 </div>
-                <button type="submit" class="btn-submit">Добавить в каталог</button>
+
+                <button type="submit" class="btn-fill-gold" style="width:100%; border:none; cursor:pointer; margin-top:1rem;">Добавить в каталог</button>
             </form>
 
-            <hr style="margin: 2rem 0; border:0; border-top: 1px solid var(--gold-solid);">
+            <hr style="margin: 2rem 0; border:0; border-top: 1px solid var(--border-gold);">
 
             <div class="form-group">
                 <label>Изменить Номер Телефона</label>
                 <input type="text" id="pPhone" value="+7 (925) 029-90-62">
-                <button type="button" onclick="updatePhone()" class="btn-submit" style="background:#444; margin-top:0.5rem;">Сохранить номер</button>
+                <button type="button" onclick="updatePhone()" class="btn-outline-gold" style="width:100%; margin-top:0.8rem;">Сохранить номер</button>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; Мастерская авторских икон ручной работы. Все права защищены.</p>
-        <span class="admin-login-link" onclick="openAdmin()"><i class="fa-solid fa-lock"></i> Вход для Администратора</span>
+        <p>&copy; Мастерская авторских икон. Все права защищены.</p>
+        <span class="admin-link" onclick="openAdmin()"><i class="fa-solid fa-lock"></i> Панель администратора</span>
     </footer>
 
-    <!-- СКРИПТ УПРАВЛЕНИЯ КАТАЛОГОМ И АДМИНКОЙ -->
     <script>
-        // Начальные товары по умолчанию
         const defaultProducts = [
-            { id: 1, title: "Икона Спас Вседержитель", desc: "Дерево, левкас, сусальное золото, темпера. Размер: 15x20 см.", price: "15 000 ₽", img: "ikona1.jpg" },
-            { id: 2, title: "Икона Божией Матери", desc: "Ручная роспись, сусальное золото, натуральная доска. Размер: 20x25 см.", price: "18 000 ₽", img: "ikona2.jpg" },
-            { id: 3, title: "Икона Святителя Николая", desc: "Каноническое письмо, чеканка по золоту. Размер: 18x24 см.", price: "20 000 ₽", img: "ikona3.jpg" }
+            { 
+                id: 1, 
+                title: "Икона Спас Вседержитель", 
+                desc: "Дерево, левкас, сусальное золото, темпера. Размер: 15x20 см.", 
+                price: "15 000 ₽", 
+                imgs: ["https://images.unsplash.com/photo-1548625149-fc4a29cf7092?q=80&w=600"] 
+            },
+            { 
+                id: 2, 
+                title: "Икона Божией Матери", 
+                desc: "Ручная роспись, сусальное золото, натуральная доска. Размер: 20x25 см.", 
+                price: "18 000 ₽", 
+                imgs: ["https://images.unsplash.com/photo-1548625149-fc4a29cf7092?q=80&w=600"] 
+            }
         ];
 
         let isAdmin = false;
 
-        // Загрузка товаров из памяти
         function getProducts() {
             const saved = localStorage.getItem('my_icons_catalog');
             return saved ? JSON.parse(saved) : defaultProducts;
+        }
+
+        function switchMainImg(prodId, newSrc, element) {
+            const card = element.closest('.product-card');
+            const mainImg = card.querySelector('.product-img-main');
+            mainImg.src = newSrc;
+            
+            const thumbs = card.querySelectorAll('.product-gallery-thumbs img');
+            thumbs.forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
         }
 
         function renderProducts() {
@@ -375,27 +572,84 @@
             const currentPhone = localStorage.getItem('my_icons_phone') || '+79250299062';
             const cleanPhone = currentPhone.replace(/\D/g, '');
 
-            container.innerHTML = products.map(p => `
-                <div class="product-card">
-                    <button class="delete-btn" style="display:${isAdmin ? 'block' : 'none'}" onclick="deleteProduct(${p.id})"><i class="fa-solid fa-trash"></i> Удалить</button>
-                    <img src="${p.img}" alt="${p.title}" class="product-img" onerror="this.src='https://via.placeholder.com/300x340?text=Фото+Иконы'">
-                    <div class="product-info">
-                        <h4 class="product-title">${p.title}</h4>
-                        <p class="product-desc">${p.desc}</p>
-                        <div class="product-price">${p.price}</div>
-                        <a href="https://wa.me/${cleanPhone}?text=Здравствуйте!%20Хочу%20заказать%20икону:%20${encodeURIComponent(p.title)}" target="_blank" class="btn-order">Заказать в WhatsApp</a>
+            container.innerHTML = products.map(p => {
+                const imgList = Array.isArray(p.imgs) ? p.imgs : [p.img || 'https://via.placeholder.com/300x360?text=Фото+Иконы'];
+                const mainImg = imgList[0];
+
+                const thumbsHtml = imgList.length > 1 ? `
+                    <div class="product-gallery-thumbs">
+                        ${imgList.map((imgUrl, idx) => `
+                            <img src="${imgUrl}" class="${idx === 0 ? 'active' : ''}" onclick="switchMainImg(${p.id}, '${imgUrl}', this)">
+                        `).join('')}
                     </div>
-                </div>
-            `).join('');
+                ` : '';
+
+                return `
+                    <div class="product-card">
+                        <button class="delete-btn" style="display:${isAdmin ? 'block' : 'none'}" onclick="deleteProduct(${p.id})"><i class="fa-solid fa-trash"></i> Удалить</button>
+                        <img src="${mainImg}" alt="${p.title}" class="product-img-main" onerror="this.src='https://via.placeholder.com/300x360?text=Фото+Иконы'">
+                        ${thumbsHtml}
+                        <div>
+                            <h4 class="product-title">${p.title}</h4>
+                            <p class="product-desc">${p.desc}</p>
+                            <div class="product-price">${p.price}</div>
+                            <a href="https://wa.me/${cleanPhone}?text=Здравствуйте!%20Хочу%20заказать%20икону:%20${encodeURIComponent(p.title)}" target="_blank" class="btn-card-order">Заказать в WhatsApp</a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
-        // Вход в панель администратора
+        function uploadMultipleImages(fileInput) {
+            const files = Array.from(fileInput.files).slice(0, 10);
+            if (files.length === 0) return;
+
+            const status = document.getElementById('uploadStatus');
+            status.innerText = `Загрузка фото (0/${files.length})...`;
+            status.style.color = "#dfba68";
+
+            let uploadedUrls = [];
+            let completed = 0;
+
+            files.forEach(file => {
+                const formData = new FormData();
+                formData.append("image", file);
+
+                fetch("https://api.imgbb.com/1/upload?key=8e6898d986bfa33f383e58dd98ef3635", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    completed++;
+                    if (data.success) {
+                        uploadedUrls.push(data.data.url);
+                    }
+                    status.innerText = `Загрузка фото (${completed}/${files.length})...`;
+
+                    if (completed === files.length) {
+                        document.getElementById('pImgs').value = uploadedUrls.join(', ');
+                        status.innerText = `✓ Загружено ${uploadedUrls.length} фото!`;
+                        status.style.color = "#75b775";
+                    }
+                })
+                .catch(err => {
+                    completed++;
+                    if (completed === files.length) {
+                        document.getElementById('pImgs').value = uploadedUrls.join(', ');
+                        status.innerText = `Загружено ${uploadedUrls.length} из ${files.length} фото.`;
+                        status.style.color = "#dfba68";
+                    }
+                });
+            });
+        }
+
         function openAdmin() {
             if (!isAdmin) {
                 const pass = prompt("Введите пароль администратора:");
                 if (pass === "1234") {
                     isAdmin = true;
-                    alert("Успешная авторизация! Теперь вы можете добавлять товары и удалять существующие.");
+                    alert("Авторизация успешна!");
                     renderProducts();
                 } else if(pass !== null) {
                     alert("Неверный пароль!");
@@ -411,28 +665,30 @@
             document.getElementById('adminModal').style.display = 'none';
         }
 
-        // Добавление нового товара
         document.getElementById('addProductForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const products = getProducts();
+            const rawImgs = document.getElementById('pImgs').value;
+            const imgArray = rawImgs.split(',').map(s => s.trim()).filter(s => s.length > 0);
+
             const newProduct = {
                 id: Date.now(),
                 title: document.getElementById('pTitle').value,
                 desc: document.getElementById('pDesc').value,
                 price: document.getElementById('pPrice').value,
-                img: document.getElementById('pImg').value
+                imgs: imgArray.length > 0 ? imgArray : ['https://via.placeholder.com/300x360?text=Фото+Иконы']
             };
             products.push(newProduct);
             localStorage.setItem('my_icons_catalog', JSON.stringify(products));
             renderProducts();
             closeAdmin();
             this.reset();
-            alert("Икона успешно добавлена в каталог!");
+            document.getElementById('uploadStatus').innerText = "";
+            alert("Икона добавлена в каталог!");
         });
 
-        // Удаление товара
         function deleteProduct(id) {
-            if (confirm("Вы точно хотите удалить эту икону из каталога?")) {
+            if (confirm("Удалить эту икону из каталога?")) {
                 let products = getProducts();
                 products = products.filter(p => p.id !== id);
                 localStorage.setItem('my_icons_catalog', JSON.stringify(products));
@@ -440,7 +696,6 @@
             }
         }
 
-        // Обновление телефона
         function updatePhone() {
             const newPhone = document.getElementById('pPhone').value;
             localStorage.setItem('my_icons_phone', newPhone);
@@ -452,10 +707,9 @@
             document.getElementById('tgLink').href = 'https://t.me/+' + clean;
             
             renderProducts();
-            alert("Номер телефона успешно обновлен!");
+            alert("Номер телефона обновлен!");
         }
 
-        // Инициализация при загрузке
         window.onload = function() {
             const savedPhone = localStorage.getItem('my_icons_phone');
             if(savedPhone) {
