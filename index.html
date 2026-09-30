@@ -1,549 +1,290 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мастерская икон — Авторские работы ручной работы</title>
-  
-  <!-- Подключение шрифтов и иконок -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастерская икон — Авторские работы ручной работы</title>
+    
+    <!-- Подключение шрифтов и иконок -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <style>
-    :root {
-      --primary: #8b181b;
-      --primary-hover: #6d1013;
-      --gold: #d4af37;
-      --gold-light: #f3e5ab;
-      --bg: #fdfbf7;
-      --card-bg: #ffffff;
-      --text: #2c2c2c;
-      --text-muted: #666666;
-      --border: #e2d7c5;
-      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    }
+    <style>
+        :root {
+            --primary: #5b0101;
+            --primary-hover: #460101;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --bg: #fdfbf7;
+            --card-bg: #ffffff;
+            --text: #2c2c2c;
+            --text-muted: #666666;
+            --border: #e2d7c5;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+        }
 
-    header {
-      background: #ffffff;
-      border-bottom: 2px solid var(--gold);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
+        header {
+            background: #ffffff;
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
 
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--primary);
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--primary);
+        }
 
-    .logo i { font-size: 1.8rem; color: var(--gold); }
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
 
-    .logo-text h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      line-height: 1.1;
-    }
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
 
-    .logo-text span {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-family: 'Montserrat', sans-serif;
-    }
+        .logo-text span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
+        .hero {
+            text-align: center;
+            padding: 5rem 1.5rem;
+            background: linear-gradient(rgba(253, 251, 247, 0.9), rgba(253, 251, 247, 0.9)), url('https://images.unsplash.com/photo-1548625149-fc4a29cf7092?q=80&w=1200') center/cover;
+            border-bottom: 1px solid var(--border);
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-    }
+        .hero h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
 
-    .btn-admin {
-      background-color: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+        }
 
-    .btn-admin:hover {
-      background-color: var(--primary);
-      color: white;
-    }
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
 
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1600&q=80') center/cover;
-      color: white;
-      text-align: center;
-      padding: 4rem 1.5rem;
-      border-bottom: 3px solid var(--gold);
-    }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
 
-    .hero-content { max-width: 800px; margin: 0 auto; }
-    .hero h2 { font-size: 2.8rem; margin-bottom: 1rem; color: #fff; }
-    .hero p { font-size: 1.15rem; margin-bottom: 1.5rem; color: var(--gold-light); }
+        .contacts-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
 
-    .container { max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem; }
-    .section-title { text-align: center; font-size: 2.4rem; color: var(--primary); margin-bottom: 0.5rem; }
-    .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 2.5rem; }
+        .contacts-section h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-    }
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-    }
+        .contact-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
 
-    .card-img-container {
-      position: relative;
-      width: 100%;
-      height: 340px;
-      background-color: #f0f0f0;
-    }
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
 
-    .card-img { width: 100%; height: 100%; object-fit: cover; }
+        .contact-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
 
-    .badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: var(--primary);
-      color: white;
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-weight: 600;
-    }
+        .phone-link {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            margin-top: 0.5rem;
+        }
 
-    .card-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-    .card-title { font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; }
-    .card-details { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.8rem; }
-    .card-description { font-size: 0.92rem; color: #444; margin-bottom: 1.2rem; flex-grow: 1; }
-    .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-    .price { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
 
-    .btn-buy {
-      background: var(--gold);
-      color: #000;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 4px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
 
-    .btn-delete {
-      background-color: #dc3545;
-      color: white;
-      border: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      width: 100%;
-      margin-top: 1rem;
-    }
+        .social-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
 
-    .contacts-section {
-      background: #f4efe6;
-      border-radius: 12px;
-      padding: 3rem 2rem;
-      margin-top: 4rem;
-      border: 1px solid var(--border);
-      text-align: center;
-    }
+        .btn-wa { background-color: #25D366; }
+        .btn-tg { background-color: #0088cc; }
+        .btn-vk { background-color: #0077FF; }
+        .btn-insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .btn-ok { background-color: #EE8208; }
 
-    .contacts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+        footer {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+        }
 
-    .contact-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-    .contact-item i { font-size: 2rem; color: var(--primary); }
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
 
-    .social-links { display: flex; justify-content: center; gap: 1.2rem; margin-top: 0.5rem; }
-    .social-icon {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--primary); color: white;
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none; font-size: 1.2rem;
-    }
-
-    .modal {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 1rem;
-    }
-    .modal.active { display: flex; }
-
-    .modal-content {
-      background: white; border-radius: 8px; max-width: 600px; width: 100%;
-      max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative;
-    }
-
-    .close-modal { position: absolute; top: 1rem; right: 1.2rem; font-size: 1.5rem; cursor: pointer; color: #888; }
-    .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.9rem; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.7rem; border: 1px solid #ccc; border-radius: 4px; }
-    .form-row { display: flex; gap: 1rem; }
-    .form-row .form-group { flex: 1; }
-
-    .btn-submit {
-      width: 100%; background: var(--primary); color: white; padding: 0.8rem;
-      border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer;
-    }
-
-    .admin-toggle-bar {
-      background: #222; color: #fff; padding: 0.5rem 1rem; font-size: 0.85rem;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-
-    footer { background: #1a1a1a; color: #aaa; text-align: center; padding: 2rem 1rem; margin-top: 4rem; border-top: 3px solid var(--gold); }
-  </style>
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.2rem; }
+            .contacts-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Всплывающая панель управления для мастера -->
-  <div class="admin-toggle-bar" id="adminBar">
-    <span><i class="fa-solid fa-user-gear"></i> Панель управления: <strong id="adminStatusText">Выключена</strong></span>
-    <button class="btn-admin" style="color: white; border-color: #666;" onclick="toggleAdminMode()">
-      <i class="fa-solid fa-lock"></i> <span id="adminBtnLabel">Войти как администратор</span>
-    </button>
-  </div>
-
-  <!-- Шапка сайта -->
-  <header>
-    <div class="nav-container">
-      <a href="#" class="logo">
-        <i class="fa-solid fa-cross"></i>
-        <div class="logo-text">
-          <h1>Православный Подарок</h1>
-          <span>Авторская киотная мастерская</span>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-hands-praying"></i>
+                <div class="logo-text">
+                    <h1>Мастерская икон</h1>
+                    <span>Ручная работа</span>
+                </div>
+            </a>
         </div>
-      </a>
-      <div class="nav-links">
-        <a href="#gallery">Каталог работ</a>
-        <a href="#contacts">Контакты</a>
-        <button class="btn-admin" id="openAddModalBtn" style="display: none;" onclick="openModal()">
-          <i class="fa-solid fa-plus"></i> Добавить икону
-        </button>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Главный баннер -->
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Иконы в авторских резных киотах</h2>
-      <p>Духовная красота и благолепие в каждой детали. Ручная работа, эксклюзивное декоративное оформление и чеканка.</p>
-    </div>
-  </section>
-
-  <!-- Основной контент -->
-  <main class="container">
-    <h2 class="section-title" id="gallery">Витрина авторских работ</h2>
-    <p class="section-subtitle">Каждая работа создана с молитвой, трепетом и любовью к православному искусству</p>
-
-    <!-- Сетка для динамического вывода икон -->
-    <div class="gallery-grid" id="worksGrid"></div>
-
-    <!-- Контакты -->
-    <section class="contacts-section" id="contacts">
-      <h2 class="section-title">Связаться с мастерской</h2>
-      <p class="section-subtitle">Вы можете заказать икону или задать вопрос напрямую мастеру</p>
-
-      <div class="contacts-grid">
-        <div class="contact-item">
-          <i class="fa-solid fa-phone"></i>
-          <h4>Телефон / WhatsApp</h4>
-          <a href="tel:+79001234567" id="displayPhone">+7 (900) 123-45-67</a>
-        </div>
-
-        <div class="contact-item">
-          <i class="fa-solid fa-share-nodes"></i>
-          <h4>Мы в соцсетях и мессенджерах</h4>
-          <div class="social-links">
-            <a href="https://t.me/your_account" target="_blank" class="social-icon" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
-            <a href="https://vk.com/your_account" target="_blank" class="social-icon" title="ВКонтакте"><i class="fa-brands fa-vk"></i></a>
-            <a href="https://wa.me/79001234567" target="_blank" class="social-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <i class="fa-solid fa-location-dot"></i>
-          <h4>Доставка</h4>
-          <p style="font-size: 0.95rem; color: #555;">Бережная и надёжная упаковка для безопасной доставки по всей России.</p>
-        </div>
-      </div>
+    <section class="hero">
+        <h2>Авторские иконы ручной работы</h2>
+        <p>Создание святых образов с молитвой, соблюдением канонов и любовью к духовному искусству.</p>
+        <a href="#contacts" class="btn-primary">Связаться с мастером</a>
     </section>
-  </main>
 
-  <!-- Модальное окно добавления новой иконы -->
-  <div class="modal" id="workModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal()">&times;</span>
-      <h3 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 1.5rem;">Добавить новую работу</h3>
-      
-      <form id="addWorkForm" onsubmit="handleSaveWork(event)">
-        <div class="form-group">
-          <label for="workTitle">Название иконы / работы *</label>
-          <input type="text" id="workTitle" required placeholder="Например: Икона Спасителя в авторском киоте">
-        </div>
+    <section class="contacts-section" id="contacts">
+        <h3>Связаться со мной</h3>
+        <p>Вы можете задать любой вопрос, обсудить индивидуальный заказ или приобрести работу через удобный для вас мессенджер или соцсеть:</p>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="workPrice">Цена (руб.) *</label>
-            <input type="text" id="workPrice" required placeholder="Например: 12 500 ₽">
-          </div>
-          <div class="form-group">
-            <label for="workBadge">Статус / Метка</label>
-            <select id="workBadge">
-              <option value="В наличии">В наличии</option>
-              <option value="Под заказ">Под заказ</option>
-              <option value="Эксклюзив">Эксклюзив</option>
-              <option value="Продано">Продано</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="workDimensions">Размер киота (внешний)</label>
-            <input type="text" id="workDimensions" placeholder="Например: 36 × 32 см (глубина 4 см)">
-          </div>
-          <div class="form-group">
-            <label for="workImage">Ссылка на изображение или файл</label>
-            <input type="text" id="workImage" placeholder="https://example.com/image.jpg">
-            <input type="file" id="workFileInput" accept="image/*" style="margin-top: 5px;" onchange="handleFileUpload(event)">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="workTechnique">Техника / Материалы</label>
-          <input type="text" id="workTechnique" placeholder="Например: Резной киот, авторская чеканка">
-        </div>
-
-        <div class="form-group">
-          <label for="workDescription">Описание работы</label>
-          <textarea id="workDescription" rows="4" placeholder="Подробное описание работы..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit">Сохранить работу на сайте</button>
-      </form>
-    </div>
-  </div>
-
-  <footer>
-    <p>&copy; 2026 Авторская православная мастерская. Все права защищены.</p>
-  </footer>
-
-  <!-- Скрипт логики управления товарами -->
-  <script>
-    const defaultWorks = [
-      {
-        id: '1',
-        title: 'Икона Спасителя в авторском киоте',
-        price: '14 500 ₽',
-        badge: 'В наличии',
-        dimensions: '36 × 32 см (образ: 14.5 × 18 см)',
-        technique: 'Деревянный киот, ажурный орнамент, литография',
-        description: 'Уникальное декоративное оформление ручной работы. Деревянный киот с тончайшим ажурным резным орнаментом.',
-        image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80'
-      },
-      {
-        id: '2',
-        title: 'Иверская Пресвятая Богородица',
-        price: '15 000 ₽',
-        badge: 'В наличии',
-        dimensions: '32–36 см (образ: 18 × 14.5 см)',
-        technique: 'Натуральное дерево, резной декор, литография',
-        description: 'Икона в деревянном киоте из натурального дерева премиального качества. Ручная работа.',
-        image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80'
-      }
-    ];
-
-    let works = [];
-    let isAdmin = false;
-    let currentUploadedImageUrl = '';
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedWorks = localStorage.getItem('craft_works');
-      if (savedWorks) {
-        works = JSON.parse(savedWorks);
-      } else {
-        works = defaultWorks;
-        saveWorksToStorage();
-      }
-      renderWorks();
-    });
-
-    function saveWorksToStorage() {
-      localStorage.setItem('craft_works', JSON.stringify(works));
-    }
-
-    function toggleAdminMode() {
-      isAdmin = !isAdmin;
-      const statusText = document.getElementById('adminStatusText');
-      const btnLabel = document.getElementById('adminBtnLabel');
-      const addBtn = document.getElementById('openAddModalBtn');
-
-      if (isAdmin) {
-        statusText.innerText = 'Активна (Режим редактирования)';
-        statusText.style.color = '#4CAF50';
-        btnLabel.innerText = 'Выйти из админки';
-        addBtn.style.display = 'inline-flex';
-      } else {
-        statusText.innerText = 'Выключена';
-        statusText.style.color = '#fff';
-        btnLabel.innerText = 'Войти как администратор';
-        addBtn.style.display = 'none';
-      }
-      renderWorks();
-    }
-
-    function renderWorks() {
-      const grid = document.getElementById('worksGrid');
-      grid.innerHTML = '';
-
-      if (works.length === 0) {
-        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #888; padding: 3rem;">Галерея пока пуста.</p>';
-        return;
-      }
-
-      works.forEach(work => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        const message = encodeURIComponent(`Здравствуйте! Меня интересует икона: "${work.title}" (${work.price}).`);
-        const whatsappUrl = `https://wa.me/79001234567?text=${message}`;
-
-        card.innerHTML = `
-          <div class="card-img-container">
-            <img src="${work.image}" alt="${work.title}" class="card-img" onerror="this.src='https://via.placeholder.com/400x400?text=Икона'">
-            <span class="badge">${work.badge || 'В наличии'}</span>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">${work.title}</h3>
-            <div class="card-details">
-              ${work.dimensions ? `<div><i class="fa-solid fa-ruler-combined"></i> ${work.dimensions}</div>` : ''}
-              ${work.technique ? `<div><i class="fa-solid fa-palette"></i> ${work.technique}</div>` : ''}
+        <div class="contacts-grid">
+            <div class="contact-card">
+                <i class="fa-solid fa-phone"></i>
+                <h4>Телефон и Мессенджеры</h4>
+                <p>Звонки, сообщения, WhatsApp и Telegram:</p>
+                <a href="tel:+79250299062" class="phone-link">+7 (925) 029-90-62</a>
+                
+                <div class="social-buttons">
+                    <a href="https://wa.me/79250299062" target="_blank" class="social-btn btn-wa">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://t.me/+79250299062" target="_blank" class="social-btn btn-tg">
+                        <i class="fa-brands fa-telegram"></i> Telegram
+                    </a>
+                </div>
             </div>
-            <p class="card-description">${work.description}</p>
-            <div class="card-footer">
-              <span class="price">${work.price}</span>
-              <a href="${whatsappUrl}" target="_blank" class="btn-buy">
-                <i class="fa-brands fa-whatsapp"></i> Заказать
-              </a>
+
+            <div class="contact-card">
+                <i class="fa-solid fa-share-nodes"></i>
+                <h4>Социальные сети</h4>
+                <p>Подписывайтесь, чтобы следить за новыми работами и процессом их создания:</p>
+
+                <div class="social-buttons">
+                    <a href="https://vk.com/ruchnaya_rabota1997" target="_blank" class="social-btn btn-vk">
+                        <i class="fa-brands fa-vk"></i> ВКонтакте
+                    </a>
+                    <a href="https://www.instagram.com/ekaterinaikona1997?stkn=ZTh5eTRpZHY4eW5t" target="_blank" class="social-btn btn-insta">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://ok.ru/profile/910467336681?utm_campaign=web_share&utm_content=profile" target="_blank" class="social-btn btn-ok">
+                        <i class="fa-brands fa-odnoklassniki"></i> Одноклассники
+                    </a>
+                </div>
             </div>
-            ${isAdmin ? `
-              <button class="btn-delete" onclick="deleteWork('${work.id}')">
-                <i class="fa-solid fa-trash"></i> Удалить работу
-              </button>
-            ` : ''}
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
+        </div>
+    </section>
 
-    function deleteWork(id) {
-      if (confirm('Вы уверены, что хотите удалить эту работу?')) {
-        works = works.filter(item => item.id !== id);
-        saveWorksToStorage();
-        renderWorks();
-      }
-    }
+    <footer>
+        <p>&copy; Мастерская икон ручной работы. Все права защищены.</p>
+    </footer>
 
-    function openModal() { document.getElementById('workModal').classList.add('active'); }
-    function closeModal() {
-      document.getElementById('workModal').classList.remove('active');
-      document.getElementById('addWorkForm').reset();
-      currentUploadedImageUrl = '';
-    }
-
-    function handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          currentUploadedImageUrl = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    function handleSaveWork(event) {
-      event.preventDefault();
-      const title = document.getElementById('workTitle').value;
-      const price = document.getElementById('workPrice').value;
-      const badge = document.getElementById('workBadge').value;
-      const dimensions = document.getElementById('workDimensions').value;
-      const imageInput = document.getElementById('workImage').value;
-      const technique = document.getElementById('workTechnique').value;
-      const description = document.getElementById('workDescription').value;
-
-      const imageUrl = currentUploadedImageUrl || imageInput || 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80';
-
-      const newWork = {
-        id: Date.now().toString(),
-        title, price, badge, dimensions, technique, description, image: imageUrl
-      };
-
-      works.unshift(newWork);
-      saveWorksToStorage();
-      renderWorks();
-      closeModal();
-    }
-  </script>
 </body>
 </html>
