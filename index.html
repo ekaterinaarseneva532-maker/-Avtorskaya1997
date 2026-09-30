@@ -35,7 +35,6 @@
 
         h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
 
-        /* Шапка сайта */
         header {
             background-color: rgba(18, 12, 10, 0.95);
             border-bottom: 1px solid var(--border-gold);
@@ -91,7 +90,6 @@
             font-weight: 600;
         }
 
-        /* Главный баннер (Hero) */
         .hero {
             padding: 5rem 1.5rem 6rem;
             max-width: 1200px;
@@ -166,7 +164,6 @@
             display: block;
         }
 
-        /* Каталог */
         .catalog-section {
             max-width: 1200px;
             margin: 4rem auto 6rem;
@@ -302,11 +299,8 @@
             font-weight: 600;
         }
 
-        .delete-btn:hover {
-            background: #d9534f;
-        }
+        .delete-btn:hover { background: #d9534f; }
 
-        /* Контакты */
         .contacts-section {
             background: #17100c;
             border-top: 1px solid var(--border-gold);
@@ -360,7 +354,6 @@
             color: var(--text-gold);
         }
 
-        /* Общие Модальные Окна (Заявка и Админка) */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -473,7 +466,7 @@
         </div>
 
         <div class="products-grid" id="productsContainer">
-            <!-- Загружается из JS -->
+            <!-- Динамически загружается через JS -->
         </div>
     </section>
 
@@ -557,7 +550,7 @@
                     <label for="imageFileInput" class="file-upload-label">
                         <i class="fa-solid fa-camera"></i> Выбрать фото с телефона (до 10 шт)
                     </label>
-                    <input type="file" id="imageFileInput" accept="image/*" multiple style="display:none" onchange="uploadMultipleImages(this)">
+                    <input type="file" id="imageFileInput" accept="image/*" multiple style="display:none" onchange="processLocalImages(this)">
                     <span id="uploadStatus" style="font-size:0.85rem; display:block; margin-top:8px; font-weight:500; text-align:center;"></span>
                 </div>
 
@@ -648,7 +641,6 @@
             }).join('');
         }
 
-        /* Логика Модального Окна Заказа */
         function openOrderModal(title) {
             currentOrderingTitle = title;
             document.getElementById('orderItemTitle').innerText = title ? `Работа: "${title}"` : '';
@@ -682,9 +674,9 @@
             document.getElementById('orderForm').reset();
         }
 
-        /* Загрузка изображений */
-        function compressAndUpload(file) {
-            return new Promise((resolve, reject) => {
+        // Прямое сжатие и локальная конвертация фотографий без сторонних серверов
+        function convertAndCompress(file) {
+            return new Promise((resolve) => {
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = (e) => {
@@ -692,7 +684,7 @@
                     img.src = e.target.result;
                     img.onload = () => {
                         const canvas = document.createElement('canvas');
-                        const maxDim = 1200;
+                        const maxDim = 800; // Оптимальный размер для быстрого отображения
                         let width = img.width;
                         let height = img.height;
 
@@ -709,57 +701,33 @@
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0, width, height);
 
-                        canvas.toBlob((blob) => {
-                            if (!blob) return reject("Compression error");
-                            const formData = new FormData();
-                            formData.append("image", blob, file.name);
-
-                            fetch("https://api.imgbb.com/1/upload?key=8e6898d986bfa33f383e58dd98ef3635", {
-                                method: "POST",
-                                body: formData
-                            })
-                            .then(res => res.json())
-                            .then(data => {
-                                if (data.success) resolve(data.data.url);
-                                else reject("Upload failed");
-                            })
-                            .catch(reject);
-                        }, 'image/jpeg', 0.85);
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.75);
+                        resolve(compressedBase64);
                     };
                 };
-                reader.onerror = reject;
             });
         }
 
-        async function uploadMultipleImages(fileInput) {
+        async function processLocalImages(fileInput) {
             const files = Array.from(fileInput.files).slice(0, 10);
             if (files.length === 0) return;
 
             const status = document.getElementById('uploadStatus');
             status.style.color = "#dfba68";
+            status.innerText = "Обработка фотографий...";
 
             uploadedPhotoUrls = [];
 
             for (let i = 0; i < files.length; i++) {
-                status.innerText = `Обработка и загрузка (${i + 1}/${files.length})...`;
-                try {
-                    const url = await compressAndUpload(files[i]);
-                    uploadedPhotoUrls.push(url);
-                } catch (e) {
-                    console.error(e);
-                }
+                status.innerText = `Подготовка фото (${i + 1}/${files.length})...`;
+                const dataUrl = await convertAndCompress(files[i]);
+                uploadedPhotoUrls.push(dataUrl);
             }
 
-            if (uploadedPhotoUrls.length > 0) {
-                status.innerText = `✓ Готово! Загружено фото: ${uploadedPhotoUrls.length}`;
-                status.style.color = "#75b775";
-            } else {
-                status.innerText = "Ошибка загрузки файлов.";
-                status.style.color = "#d9534f";
-            }
+            status.innerText = `✓ Готово! Выбрано фото: ${uploadedPhotoUrls.length}`;
+            status.style.color = "#75b775";
         }
 
-        /* Управление Админкой */
         function openAdmin() {
             if (!isAdmin) {
                 const pass = prompt("Введите пароль администратора:");
